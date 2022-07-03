@@ -1,11 +1,11 @@
-export type ImageProps = {
+export type Image = {
   alternativeText: string
   url: string
 }
 
-export type TechIconProps = {
-  id: number
-  icon: ImageProps
+export type TechIcon = {
+  title: string
+  icon: Image
 }
 
 export type HeaderProps = {
@@ -15,22 +15,22 @@ export type HeaderProps = {
     label: string
     url: string
   }
-  image: ImageProps
+  image: Image
 }
 
 export type SectionAboutProjectProps = {
   title: string
   description: string
-  image: ImageProps
+  image: Image
 }
 
 export type SectionTechProps = {
   title: string
-  techIcons: TechIconProps[]
+  techIcons: TechIcon[]
 }
 
 export type LandingPageProps = {
-  logo: ImageProps
+  logo: Image
   header: HeaderProps
   sectionAboutProject: SectionAboutProjectProps
   sectionTech: SectionTechProps

@@ -7,26 +7,22 @@ import Container from 'components/Container'
 import { SectionTechProps } from 'types/api'
 import { getImageUrl } from 'utils/getImageUrl'
 
-type Props = {
-  data: SectionTechProps
-}
-
-const SectionTech = ({ data }: Props) => (
+const SectionTech = ({ title, techIcons }: SectionTechProps) => (
   <S.Wrapper>
     <Container>
-      <Heading reverseColor>{data.title}</Heading>
+      <Heading reverseColor>{title}</Heading>
       <S.IconsContainer>
-        {data.techIcons.map(({ icon }, key) => {
+        {techIcons.map(({ title, icon }) => {
           const imageUrl = getImageUrl(icon.url)
 
           return (
-            <S.Icon key={key}>
+            <S.Icon key={title}>
               <S.Icons
                 src={imageUrl}
                 alt={icon.alternativeText}
                 loading="lazy"
               />
-              <S.IconsName>{icon.alternativeText}</S.IconsName>
+              <S.IconsName>{title}</S.IconsName>
             </S.Icon>
           )
         })}

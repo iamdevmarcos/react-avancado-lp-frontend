@@ -36,7 +36,7 @@ const GET_LANDING_PAGE = /* GraphQL */ `
     sectionTech {
       title
       techIcons {
-        id
+        title
         icon {
           url
           alternativeText
