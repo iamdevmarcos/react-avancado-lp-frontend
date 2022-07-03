@@ -7,40 +7,26 @@ import Container from 'components/Container'
 import { SectionAboutProjectProps } from 'types/api'
 import { getImageUrl } from 'utils/getImageUrl'
 
-type Props = {
-  data: SectionAboutProjectProps
-}
-
-const SectionAboutProject = ({ data }: Props) => {
-  const IMAGE_URL = getImageUrl(data.image.url)
-
-  return (
-    <S.Wrapper>
-      <Container>
-        <S.Container>
-          <S.Image>
-            <source srcSet={IMAGE_URL} type="image/webp" />
-            <source srcSet={IMAGE_URL} type="image/png" />
-            <img
-              src={IMAGE_URL}
-              loading="lazy"
-              alt={data.image.alternativeText}
-            />
-          </S.Image>
-          <div>
-            <Heading>{data.title}</Heading>
-            <S.Text>
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: `${data.description}`
-                }}
-              />
-            </S.Text>
-          </div>
-        </S.Container>
-      </Container>
-    </S.Wrapper>
-  )
-}
+const SectionAboutProject = ({
+  title,
+  description,
+  image
+}: SectionAboutProjectProps) => (
+  <S.Wrapper>
+    <Container>
+      <S.Container>
+        <S.Image
+          src={getImageUrl(image.url)}
+          alt={image.alternativeText}
+          loading="lazy"
+        />
+        <div>
+          <Heading>{title}</Heading>
+          <S.Text dangerouslySetInnerHTML={{ __html: description }} />
+        </div>
+      </S.Container>
+    </Container>
+  </S.Wrapper>
+)
 
 export default SectionAboutProject
