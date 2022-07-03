@@ -19,9 +19,9 @@ import SectionFaq from 'components/SectionFaq'
 import Footer from 'components/Footer'
 import JsonSchema from 'components/JsonSchema'
 
-const Index = ({ logo }: LandingPageProps) => (
+const Index = ({ logo, header }: LandingPageProps) => (
   <>
-    <SectionHero logo={logo} />
+    <SectionHero logo={logo} header={header} />
     <SectionAboutProject />
     <SectionTech />
     <SectionConcepts />
