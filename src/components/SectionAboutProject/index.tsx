@@ -1,53 +1,46 @@
 import React from 'react'
+import * as S from './styles'
 
 import Heading from 'components/Heading'
 import Container from 'components/Container'
 
-import * as S from './styles'
+import { SectionAboutProjectProps } from 'types/api'
+import { getImageUrl } from 'utils/getImageUrl'
 
-const SectionAboutProject = () => (
-  <S.Wrapper>
-    <Container>
-      <S.Container>
-        <S.Image>
-          <source
-            srcSet={require('@images/project.png?webp')}
-            type="image/webp"
-          />
-          <source srcSet={require('@images/project.png')} type="image/png" />
-          <img
-            src={require('@images/project.png')}
-            loading="lazy"
-            alt="Tela do ecommerce com uma imagem do CMS por trás"
-          />
-        </S.Image>
-        <div>
-          <Heading>O que iremos construir</Heading>
-          <S.Text>
-            <p>
-              Iremos criar um e-commerce de jogos, incluindo toda a parte de
-              pagamentos e área do cliente. Os clientes poderão fazer buscas,
-              filtrar, adicionar ao carrinho e comprar seus jogos favoritos.
-            </p>
+type Props = {
+  data: SectionAboutProjectProps
+}
 
-            <p>
-              Teremos também um <strong>CMS completamente customizado</strong>{' '}
-              para que os administradores possam adicionar produtos, categorias,
-              plataformas, criar promoções, editar partes do site, além de
-              emails automatizados para às vendas de cada produto.
-            </p>
+const SectionAboutProject = ({ data }: Props) => {
+  const IMAGE_URL = getImageUrl(data.image.url)
 
-            <p>
-              Para criar tudo isso, iremos utilizar ferramentas muito famosas no
-              mercado de trabalho, como ReactJS, Next, Apollo e outras coisas
-              mais. Sempre prezando pela qualidade do código, ou seja, teremos{' '}
-              <strong>testes em tudo!</strong>
-            </p>
-          </S.Text>
-        </div>
-      </S.Container>
-    </Container>
-  </S.Wrapper>
-)
+  return (
+    <S.Wrapper>
+      <Container>
+        <S.Container>
+          <S.Image>
+            <source srcSet={IMAGE_URL} type="image/webp" />
+            <source srcSet={IMAGE_URL} type="image/png" />
+            <img
+              src={IMAGE_URL}
+              loading="lazy"
+              alt={data.image.alternativeText}
+            />
+          </S.Image>
+          <div>
+            <Heading>{data.title}</Heading>
+            <S.Text>
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: `${data.description}`
+                }}
+              />
+            </S.Text>
+          </div>
+        </S.Container>
+      </Container>
+    </S.Wrapper>
+  )
+}
 
 export default SectionAboutProject
