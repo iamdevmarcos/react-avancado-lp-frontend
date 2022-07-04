@@ -8,6 +8,19 @@ export type TechIcon = {
   icon: Image
 }
 
+export type SocialLink = {
+  title: string
+  url: string
+}
+
+export type Author = {
+  photo: Image
+  name: string
+  role: string
+  socialLinks?: SocialLink[]
+  description: string
+}
+
 export type HeaderProps = {
   title: string
   description: string
@@ -61,6 +74,11 @@ export type PricingBoxProps = {
   }
 }
 
+export type SectionAboutUsProps = {
+  title: string
+  authors: Author[]
+}
+
 export type LandingPageProps = {
   logo: Image
   header: HeaderProps
@@ -70,4 +88,5 @@ export type LandingPageProps = {
   sectionModules: SectionModulesProps
   sectionAgenda: SectionAgendaProps
   pricingBox: PricingBoxProps
+  sectionAboutUs: SectionAboutUsProps
 }
